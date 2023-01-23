@@ -1,2 +1,4 @@
 # BIT_WIN_WEB
-BIT_WIN_WEB 화면단 소스입니다.
+Front code
+
+# BIT_WIN_WEB <-(ajax)-> BIT_WIN_API
