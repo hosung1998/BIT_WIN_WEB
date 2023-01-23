@@ -24,7 +24,7 @@
 	<!--한국어  달력 쓰려면 추가 로드-->
 	<!-- <script src="resources/js/plugin/datepicker/bootstrap-datepicker.ko.min.js"></script> -->
 
-<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="../../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
       .bd-placeholder-img {
@@ -177,7 +177,7 @@
   </footer>
 </div>
 
-    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/dist/js/bootstrap.bundle.min.js"></script>
     <script src="form-validation.js"></script>
     
     <script type="text/javascript">
@@ -197,8 +197,7 @@
 		
     	//home
     	function home(){
-    		
-    		location.href= web_url + "/Loginpage/index.html"
+    		location.href= web_url + "/com/com0001/index.html"
     	}
     
     	//signup
@@ -260,21 +259,21 @@
 					  icon: 'error',                         // Alert 타입
 					});
 				errcnt++;
-    		} 	   		 
+    		} 	   
+    		
     		
 			if (errcnt == 0){
-		    	formdata.append("ID",data1);
-	    		formdata.append("PASSWD",data2);
-	    		formdata.append("NAME",data3);
-	    		formdata.append("PHONE",data4);
-	    		formdata.append("ADDRESS",data5);
+		    	formdata.append("id",data1);
+	    		formdata.append("passwd",data2);
+	    		formdata.append("name",data3);
+	    		formdata.append("phone",data4);
+	    		formdata.append("address",data5);
 	    		formdata.append("ACCESS_KEY",data6);
 	    		formdata.append("SECRET_KEY",data7);    		
 	    		formdata.append("ACCESS_IP",data8);
 	    		formdata.append("ENDDATE",data9);
 	    		
 	    		
-	    		debugger;
 		    	$.ajax({
 		    		url : api_url + '/sign',
 		    		//dataType : 'json',
