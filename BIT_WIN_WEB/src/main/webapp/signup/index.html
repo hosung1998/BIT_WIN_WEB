@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.104.2">
+    <title>Checkout example · Bootstrap v5.2</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/checkout/">
+
+    
+
+	    <!-- datepicker 는 jquery 1.7.1 이상 bootstrap 2.0.4 이상 버전이 필요함 -->
+	<!-- jQuery가 먼저 로드 된 후 datepicker가 로드 되어야함.-->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
+	<link rel="stylesheet" href="resources/css/plugin/datepicker/bootstrap-datepicker.css">
+	
+	<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+	<script src="resources/js/plugin/datepicker/bootstrap-datepicker.js"></script>
+	
+	
+	<!--한국어  달력 쓰려면 추가 로드-->
+	<!-- <script src="resources/js/plugin/datepicker/bootstrap-datepicker.ko.min.js"></script> -->
+
+<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+		.col-lg-8 {
+		    flex: 0 0 auto;
+		    width: 98.66666667%;
+		}
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+      .pb-5, .py-5{
+      	    padding-bottom: 0rem!important;
+      }
+    </style>
+
+    <!-- Custom styles for this template -->
+    <link href="form-validation.css" rel="stylesheet">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>    
+  </head>
+  <body class="bg-light">
+    
+<div class="container">
+  <main>
+    <div class="py-5 text-center">
+      <img class="d-block mx-auto mb-4" src="bitcoin-logo6.png" alt="" width="250" height="180">
+    </div>
+
+    <div class="row g-5">
+      <div class="col-md-7 col-lg-8">
+        <h4 class="mb-3" >Basic Information </h4>
+        <form class="needs-validation" novalidate>
+          <div class="row g-3">
+            <div class="col-12">
+              <label for="firstName" class="form-label">Name</label>
+              <input type="text" class="form-control" name="NAME" id="firstName" placeholder="" value="" required>
+              <div class="invalid-feedback">
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="email" class="form-label">Email <span class="text-muted"></span></label>
+              <input type="email" class="form-control" name=ID id="email" placeholder="you@example.com" required>
+              <div class="invalid-feedback">
+                Valid email is required.
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="passwd" class="form-label">Password</label>
+              <input type="password" class="form-control" name="PASSWD" id="passwd" placeholder="" required>
+              <div class="invalid-feedback">
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="phone" class="form-label">Phone <span class="text-muted"></span></label>
+              <input type="text" class="form-control" id="phone" name="PHONE" placeholder="010-0000-0000" required>
+            </div>
+            
+            <div class="col-12">
+              <label for="address" class="form-label">Address <span class="text-muted"></span></label>
+              <input type="text" class="form-control" id="address" name="ADDRESS" placeholder="" required>              
+            </div>     
+            <h4 class="mb-3"> Information </h4>
+            <a href="https://upbit.com/service_center/open_api_guide" target="_blank" style="text-decoration: none;"><b>>>Key Issuance Guide</b></a>
+            <div class="col-12">
+              <label for="access_key" class="form-label">ACCESS_KEY<span class="text-muted"></span></label>
+              <input type="text" class="form-control" id="access_key" name="ACCESS_KEY" placeholder="" required>              
+            </div>            
+
+            <div class="col-12">
+              <label for="secret_key" class="form-label">SECRET_KEY<span class="text-muted"></span></label>
+              <input type="text" class="form-control" id="secret_key" name="SECRET_KEY" placeholder="" required>              
+            </div>   
+            
+            <div class="col-12">
+              <label for="access_ip" class="form-label">ACCESS_IP<span class="text-muted"></span></label>
+             <input type="text" class="form-control" id="access_ip" name="ACCESS_IP" placeholder="000.000.000.00" required>          
+            </div>               
+ 
+             <div class="col-12">
+              <label for="enddate" class="form-label">END_DATE<span class="text-muted"></span></label>
+             <input type="date" id="enddate" class="form-control" name="ENDDATE" value="YYYY-MM-DD" required>            
+            </div>       
+                                          
+          <button class="w-100 btn btn-primary btn-lg" onclick="signup()" type="button	">Continue to checkout</button>
+          <button class="w-100 btn btn-primary btn-lg" onclick="home()" type="button">home</button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">&copy; 2017–2022 Company Name</p>
+    <ul class="list-inline">
+      <li class="list-inline-item"><a href="#">Privacy</a></li>
+      <li class="list-inline-item"><a href="#">Terms</a></li>
+      <li class="list-inline-item"><a href="#">Support</a></li>
+    </ul>
+  </footer>
+</div>
+
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="form-validation.js"></script>
+    
+    <script type="text/javascript">
+		var url = window.location.href;
+  		var api_url = "";
+  		var web_url = "";
+  		
+  		//dev
+  		if(url.substr(0,21) == "http://localhost:8080"){
+  			api_url = "http://localhost:5000";
+  			web_url = "http://localhost:8080";
+  		//prod
+  		}else{
+  			api_url = "https://bit-win-api.herokuapp.com";
+  			web_url = "https://bit-win-web.herokuapp.com";
+  		}    	
+		
+    	//home
+    	function home(){
+    		
+    		location.href= web_url + "/Loginpage/index.html"
+    	}
+    
+    	//signup
+    	function signup(){
+    		
+    		var errcnt = 0;
+    		var formdata = new FormData();
+
+    		var data1 = $('input[name=ID]').val();
+    		var data2 = $('input[name=PASSWD]').val();
+    		var data3 = $('input[name=NAME]').val();
+    		var data4 = $('input[name=PHONE]').val();
+			var data5 = $('input[name=ADDRESS]').val();
+    		var data6 = $('input[name=ACCESS_KEY]').val();
+    		var data7 = $('input[name=SECRET_KEY]').val();
+    		var data8 = $('input[name=ACCESS_IP]').val()
+    		var data9 = $('input[name=ENDDATE]').val();
+    		
+    		
+    		//email check
+   			const EMAIL_REGEX = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+   			if (!EMAIL_REGEX.test(data1)) {
+				Swal.fire({
+					  title: '등록 실패',         // Alert 제목
+					  text: '이메일 형식에 맞게 입력해주세요.',  // Alert 내용
+					  icon: 'error',                         // Alert 타입
+					});   				
+				errcnt++;
+   			}
+    		
+    		
+   			//phone check
+	   		const regExp = /^(?:(010-\d{4})|(01[1|6|7|8|9]-\d{3,4}))-(\d{4})$/;
+	   		if(!regExp.test(data4)){
+				Swal.fire({
+					  title: '등록 실패',         // Alert 제목
+					  text: '휴대폰 형식에 맞게 입력해주세요.',  // Alert 내용
+					  icon: 'error',                         // Alert 타입
+					});
+				errcnt++;
+	   		}
+	   		
+	   		//ASSCESS_IP check
+		    var ipformat = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+		    if (!ipformat.test(data8)) {
+				Swal.fire({
+					  title: '등록 실패',         // Alert 제목
+					  text: 'IP 형식에 맞게 입력해주세요.',  // Alert 내용
+					  icon: 'error',                         // Alert 타입
+					});   ;
+				errcnt++;
+		    }	   		
+		    
+    		//data check
+    	 	if(data1 == "" || data2 == "" || data3 == "" || data4 == "" || data5 == "" || data6 == "" || data7 == "" || data8 == "" || data9 == ""){
+				Swal.fire({
+					  title: '등록 실패',         // Alert 제목
+					  text: '모두 입력해주세요.',  // Alert 내용
+					  icon: 'error',                         // Alert 타입
+					});
+				errcnt++;
+    		} 	   		 
+    		
+			if (errcnt == 0){
+		    	formdata.append("ID",data1);
+	    		formdata.append("PASSWD",data2);
+	    		formdata.append("NAME",data3);
+	    		formdata.append("PHONE",data4);
+	    		formdata.append("ADDRESS",data5);
+	    		formdata.append("ACCESS_KEY",data6);
+	    		formdata.append("SECRET_KEY",data7);    		
+	    		formdata.append("ACCESS_IP",data8);
+	    		formdata.append("ENDDATE",data9);
+	    		
+	    		
+	    		debugger;
+		    	$.ajax({
+		    		url : api_url + '/sign',
+		    		//dataType : 'json',
+		    		async: false,
+		    		contentType: false
+		            ,processData: false,
+		    		type : 'POST',
+		    		data : formdata,
+		    		success : function(result) {
+		    			if(result.status == "ok"){
+		    				Swal.fire({
+		    					  title: '회원가입 성공',         // Alert 제목
+		    					  text: '회원가입에 성공하였습니다.',  // Alert 내용
+		    					  icon: 'success',                         // Alert 타입
+		    					});		
+		    				location.href= web_url + "/Loginpage/index.html";
+		    			}else{
+		    				Swal.fire({
+		    					  title: '회원가입 실패',         // Alert 제목
+		    					  text: '회원가입에 실패하였습니다.',  // Alert 내용
+		    					  icon: 'error',                         // Alert 타입
+		    					});			
+		    			}
+		    		}
+	    		});				
+			}    		
+
+    	}
+    </script>
+  </body>
+</html>
