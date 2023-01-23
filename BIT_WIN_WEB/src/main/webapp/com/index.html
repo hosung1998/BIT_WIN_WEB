@@ -104,7 +104,8 @@
   
   <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
   <script type="text/javascript">
-  	//login
+  	
+    //login
   	function loginAction(){
 		var tagid = $('#floatingInput').val();
 		var tagpw = $('#floatingPassword').val();
@@ -114,7 +115,6 @@
 		if(tagid == "" && tagpw == ""){
 			return false;
 		}
-		
 		
   		var url = window.location.href;
   		var api_url = "";
@@ -129,17 +129,18 @@
   			api_url = "https://bit-win-api.herokuapp.com";
   			web_url = "https://bit-win-web.herokuapp.com";
   		}		
+  		var formdata = new FormData();
+    	formdata.append("ID"    ,tagid);
+		formdata.append("PASSWD",tagpw); 
 		
-        var params = {
-                id      : tagid
-              , passwd       : tagpw
-        }
       // ajax 통신
       $.ajax({
-          type : "GET",            // HTTP method type(GET, POST) 형식이다.
           url :  api_url + "/user/login",      // 컨트롤러에서 대기중인 URL 주소이다.
-          data : params,            // Json 형식의 데이터이다.
-          async: false,
+	  	  async: false,
+		  contentType: false,
+	      processData: false,
+	      type : 'POST',
+		  data : formdata,
           success : function(res){ // 비동기통신의 성공일경우 success콜백으로 들어옵니다. 'res'는 응답받은 데이터이다.
 			if(res.rs == "ok"){
 				console.log(res);
@@ -149,12 +150,6 @@
 				  icon: 'success',                         // Alert 타입
 				});			
 				location.href= web_url + "/DashBoard/index.jsp"
-			}else{
-				Swal.fire({
-				  title: '로그인 실패',         // Alert 제목
-				  text: '아이디와 패스워드를 확인해주세요',  // Alert 내용
-				  icon: 'error',                         // Alert 타입
-				});				
 			}
           },
           error : function(XMLHttpRequest, textStatus, errorThrown){ // 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
