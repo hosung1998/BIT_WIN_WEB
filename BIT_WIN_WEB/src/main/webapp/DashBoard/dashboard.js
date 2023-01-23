@@ -5,7 +5,9 @@ function dayclick_7(){
 }
 
 function dayclick_15(){
+	
 	chartadd(15);
+	
 }
 
 
