@@ -224,7 +224,8 @@
 					  title: '등록 실패',         // Alert 제목
 					  text: '이메일 형식에 맞게 입력해주세요.',  // Alert 내용
 					  icon: 'error',                         // Alert 타입
-					});   				
+					});
+				return false;
 				errcnt++;
    			}
     		
@@ -237,6 +238,7 @@
 					  text: '휴대폰 형식에 맞게 입력해주세요.',  // Alert 내용
 					  icon: 'error',                         // Alert 타입
 					});
+				return false;
 				errcnt++;
 	   		}
 	   		
@@ -247,7 +249,8 @@
 					  title: '등록 실패',         // Alert 제목
 					  text: 'IP 형식에 맞게 입력해주세요.',  // Alert 내용
 					  icon: 'error',                         // Alert 타입
-					});   ;
+					});
+				return false;
 				errcnt++;
 		    }	   		
 		    
@@ -258,6 +261,7 @@
 					  text: '모두 입력해주세요.',  // Alert 내용
 					  icon: 'error',                         // Alert 타입
 					});
+				return false;
 				errcnt++;
     		} 	   
     		
@@ -273,29 +277,29 @@
 	    		formdata.append("ACCESS_IP",data8);
 	    		formdata.append("ENDDATE",data9);
 	    		
-	    		
+	    		alert("url : " + api_url + '/sign');
 		    	$.ajax({
 		    		url : api_url + '/sign',
-		    		//dataType : 'json',
 		    		async: false,
 		    		contentType: false
 		            ,processData: false,
 		    		type : 'POST',
 		    		data : formdata,
 		    		success : function(result) {
-		    			if(result.status == "ok"){
+		    			if(result.code == "200"){
 		    				Swal.fire({
 		    					  title: '회원가입 성공',         // Alert 제목
 		    					  text: '회원가입에 성공하였습니다.',  // Alert 내용
 		    					  icon: 'success',                         // Alert 타입
-		    					});		
-		    				location.href= web_url + "/Loginpage/index.html";
+		    					},function(){
+		    						location.href= web_url + "/Loginpage/index.html";		
+		    				    });		
 		    			}else{
 		    				Swal.fire({
-		    					  title: '회원가입 실패',         // Alert 제목
+		    					  title:'회원가입 실패',         // Alert 제목
 		    					  text: '회원가입에 실패하였습니다.',  // Alert 내용
 		    					  icon: 'error',                         // Alert 타입
-		    					});			
+		    					},function(){return false;});
 		    			}
 		    		}
 	    		});				
