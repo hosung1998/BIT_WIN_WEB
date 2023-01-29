@@ -11,6 +11,7 @@
 	<link href="../../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 	<script src="js/jquery-3.3.1.min.js"></script>
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -67,16 +68,17 @@
       }
     </style>
     <!-- Custom styles for this template -->
-    <link href="signin.css" rel="stylesheet">
+    <link href="./css/signin.css" rel="stylesheet">
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="./js/main.js" ></script>
   </head>
   <body class="text-center">
 	<main class="form-signin w-100 m-auto">
 	  <form>
-	    <img class="mb-4" src="bitcoin-logo6.png" alt="" width="230" height="150">
+	    <img class="mb-4" src="./css/logo.png" alt="" width="230" height="150">
 	    <div class="form-floating">
 	      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
 	      <label for="floatingInput">Email address</label>
@@ -96,70 +98,10 @@
 	      </label>      
 	    </div>
 	    
-	    <button class="w-100 btn btn-lg btn-primary" onclick="loginAction()" type="button"><B>Login</B></button>
+	    <button class="w-100 btn btn-lg btn-primary" onclick="fn_login()" type="button"><B>Login</B></button>
 	    <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
 	  </form>
 	</main>
   </body>
-  
-  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-  <script type="text/javascript">
-  	
-    //login
-  	function loginAction(){
-		var tagid = $('#floatingInput').val();
-		var tagpw = $('#floatingPassword').val();
-		
-		
-		//login check
-		if(tagid == "" && tagpw == ""){
-			return false;
-		}
-		
-  		var url = window.location.href;
-  		var api_url = "";
-  		var web_url = "";
-  		
-  		//dev
-  		if(url.substr(0,21) == "http://localhost:8080"){
-  			api_url = "http://localhost:5000";
-  			web_url = "http://localhost:8080";
-  		//prod
-  		}else{
-  			api_url = "https://bit-win-api.herokuapp.com";
-  			web_url = "https://bit-win-web.herokuapp.com";
-  		}		
-  		var formdata = new FormData();
-    	formdata.append("ID"    ,tagid);
-		formdata.append("PASSWD",tagpw); 
-		
-      // ajax 통신
-      $.ajax({
-          url :  api_url + "/user/login",      // 컨트롤러에서 대기중인 URL 주소이다.
-	  	  async: false,
-		  contentType: false,
-	      processData: false,
-	      type : 'POST',
-		  data : formdata,
-          success : function(res){ // 비동기통신의 성공일경우 success콜백으로 들어옵니다. 'res'는 응답받은 데이터이다.
-			if(res.rs == "ok"){
-				console.log(res);
-				Swal.fire({
-				  title: '로그인 성공',         
-				  text: '로그인에 성공하였습니다.',  // Alert 내용
-				  icon: 'success',                         // Alert 타입
-				});			
-				location.href= web_url + "/DashBoard/index.jsp"
-			}
-          },
-          error : function(XMLHttpRequest, textStatus, errorThrown){ // 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
-				Swal.fire({
-				  title: '로그인 실패',         // Alert 제목
-				  text: '아이디와 패스워드를 확인해주세요',  // Alert 내용
-				  icon: 'error',                         // Alert 타입
-				});
-          }
-      });  		
-  	}
-  </script>
+ 
 </html>
